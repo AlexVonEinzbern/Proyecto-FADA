@@ -27,65 +27,38 @@ def leer_archivo():
     return datos
 
 
-def insertionSortDesc(array, ordenar_por):
+def insertionSort(array, ordenar_por, func):
     for j in range(len(array)):
         key = array[j]
         i = j - 1
-        while (i >= 0 and (key[ordenar_por] > array[i][ordenar_por])):
+        while (i >= 0 and func(key[ordenar_por], array[i][ordenar_por])):
             array[i + 1] = array[i]
             i = i - 1
         array[i+1] = key
     return array
 
-
-def insertionSortAsc(array, ordenar_por):
-    for j in range(len(array)):
-        key = array[j]
-        i = j - 1
-        while (i >= 0 and (key[ordenar_por] < array[i][ordenar_por])):
-            array[i + 1] = array[i]
-            i = i - 1
-        array[i+1] = key
-    return array
-
-def merge_sort(arr):
+def merge_sort(arr, ordenar_por, func):
 
     if len(arr) <= 1:
         return arr
     mid = len(arr) // 2
 
-    left, right = merge_sort(arr[:mid]), merge_sort(arr[mid:])
+    left, right = merge_sort(arr[:mid], ordenar_por, func), merge_sort(arr[mid:], ordenar_por, func)
 
-    return mergeDes(left, right, arr.copy())
+    return merge(left, right, arr.copy(), ordenar_por, func)
 
-#Merge descendente
-def mergeDes(left, right, merged):
+def menor_igual_que(x, y):
+    return x <= y
 
+def mayor_que(x, y):
+    return x > y
+
+def merge(left, right, merged, ordenar_por, func):
+    
     left_cursor, right_cursor = 0, 0
     while left_cursor < len(left) and right_cursor < len(right):
       
-        if left[left_cursor] > right[right_cursor]:
-            merged[left_cursor+right_cursor]=left[left_cursor]
-            left_cursor += 1
-        else:
-            merged[left_cursor + right_cursor] = right[right_cursor]
-            right_cursor += 1
-            
-    for left_cursor in range(left_cursor, len(left)):
-        merged[left_cursor + right_cursor] = left[left_cursor]
-        
-    for right_cursor in range(right_cursor, len(right)):
-        merged[left_cursor + right_cursor] = right[right_cursor]
-
-    return merged
-
-#Merge ascendente
-def mergeAsc(left, right, merged):
-
-    left_cursor, right_cursor = 0, 0
-    while left_cursor < len(left) and right_cursor < len(right):
-      
-        if left[left_cursor] <= right[right_cursor]:
+        if func(left[left_cursor][ordenar_por], right[right_cursor][ordenar_por]):
             merged[left_cursor+right_cursor]=left[left_cursor]
             left_cursor += 1
         else:
@@ -101,12 +74,12 @@ def mergeAsc(left, right, merged):
     return merged
 
 def ordenarDatosDesc(datos):
-    ordenados = insertionSortDesc(datos, 'hora_t')
+    ordenados = merge_sort(datos, 'hora_t', mayor_que)
     return ordenados
 
 
 def ordenarDatosAsc(datos):
-    ordenados = insertionSortAsc(datos, 'hora_i')
+    ordenados = merge_sort(datos, 'hora_i', menor_igual_que)
     return ordenados
 
 '''
@@ -180,49 +153,7 @@ def principal():
     archivoSalida(seleccionados)
 
 
-def merge_sort_dict(d, ordenar_por):
-
-    datos = []
-    for i in d:
-        datos.append(i[ordenar_por])
-    orden = merge_sort(datos)
-    hora_t_dict = {k[ordenar_por]: k for k in d}
-    
-    return [hora_t_dict[i] for i in orden]
-
-
-"""
-Esto es una función de prueba
-"""
-
-def prueba():
-
-    d = [{
-        'id':1,
-        'nombre':'Act1',
-        'hora_i':0,
-        'hora_f':4,
-        'hora_t':4
-    },
-    {
-        'id':2,
-        'nombre':'Act2',
-        'hora_i':4,
-        'hora_f':6,
-        'hora_t':2
-    },
-    {
-        'id':3,
-        'nombre':'Act3',
-        'hora_i':10,
-        'hora_f':17,
-        'hora_t':7
-    }]
-
-    print(merge_sort_dict(d, 'hora_t'))
-
 if __name__ == '__main__':
     #Ejecucion
-    #principal()
-    prueba()
+    principal()
         
