@@ -56,7 +56,7 @@ def merge_sort(arr):
 
     left, right = merge_sort(arr[:mid]), merge_sort(arr[mid:])
 
-    return mergeAsc(left, right, arr.copy())
+    return mergeDes(left, right, arr.copy())
 
 #Merge descendente
 def mergeDes(left, right, merged):
@@ -179,6 +179,50 @@ def principal():
     seleccionados = selccionarTareas(datos)
     archivoSalida(seleccionados)
 
+
+def merge_sort_dict(d, ordenar_por):
+
+    datos = []
+    for i in d:
+        datos.append(i[ordenar_por])
+    orden = merge_sort(datos)
+    hora_t_dict = {k[ordenar_por]: k for k in d}
+    
+    return [hora_t_dict[i] for i in orden]
+
+
+"""
+Esto es una función de prueba
+"""
+
+def prueba():
+
+    d = [{
+        'id':1,
+        'nombre':'Act1',
+        'hora_i':0,
+        'hora_f':4,
+        'hora_t':4
+    },
+    {
+        'id':2,
+        'nombre':'Act2',
+        'hora_i':4,
+        'hora_f':6,
+        'hora_t':2
+    },
+    {
+        'id':3,
+        'nombre':'Act3',
+        'hora_i':10,
+        'hora_f':17,
+        'hora_t':7
+    }]
+
+    print(merge_sort_dict(d, 'hora_t'))
+
 if __name__ == '__main__':
     #Ejecucion
-    principal()
+    #principal()
+    prueba()
+        
