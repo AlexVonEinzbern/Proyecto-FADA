@@ -48,6 +48,57 @@ def insertionSortAsc(array, ordenar_por):
         array[i+1] = key
     return array
 
+def merge_sort(arr):
+
+    if len(arr) <= 1:
+        return arr
+    mid = len(arr) // 2
+
+    left, right = merge_sort(arr[:mid]), merge_sort(arr[mid:])
+
+    return mergeAsc(left, right, arr.copy())
+
+#Merge descendente
+def mergeDes(left, right, merged):
+
+    left_cursor, right_cursor = 0, 0
+    while left_cursor < len(left) and right_cursor < len(right):
+      
+        if left[left_cursor] > right[right_cursor]:
+            merged[left_cursor+right_cursor]=left[left_cursor]
+            left_cursor += 1
+        else:
+            merged[left_cursor + right_cursor] = right[right_cursor]
+            right_cursor += 1
+            
+    for left_cursor in range(left_cursor, len(left)):
+        merged[left_cursor + right_cursor] = left[left_cursor]
+        
+    for right_cursor in range(right_cursor, len(right)):
+        merged[left_cursor + right_cursor] = right[right_cursor]
+
+    return merged
+
+#Merge ascendente
+def mergeAsc(left, right, merged):
+
+    left_cursor, right_cursor = 0, 0
+    while left_cursor < len(left) and right_cursor < len(right):
+      
+        if left[left_cursor] <= right[right_cursor]:
+            merged[left_cursor+right_cursor]=left[left_cursor]
+            left_cursor += 1
+        else:
+            merged[left_cursor + right_cursor] = right[right_cursor]
+            right_cursor += 1
+            
+    for left_cursor in range(left_cursor, len(left)):
+        merged[left_cursor + right_cursor] = left[left_cursor]
+        
+    for right_cursor in range(right_cursor, len(right)):
+        merged[left_cursor + right_cursor] = right[right_cursor]
+
+    return merged
 
 def ordenarDatosDesc(datos):
     ordenados = insertionSortDesc(datos, 'hora_t')
@@ -125,6 +176,6 @@ def principal():
     seleccionados = selccionarTareas(datos)
     archivoSalida(seleccionados)
 
-
-#Ejecucion
-principal()
+if __name__ == '__main__':
+    #Ejecucion
+    principal()
