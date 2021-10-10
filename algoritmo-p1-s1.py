@@ -47,11 +47,6 @@ def merge_sort(arr, ordenar_por, func):
 
     return merge(left, right, arr.copy(), ordenar_por, func)
 
-def menor_igual_que(x, y):
-    return x <= y
-
-def mayor_que(x, y):
-    return x > y
 
 def merge(left, right, merged, ordenar_por, func):
     
@@ -72,6 +67,12 @@ def merge(left, right, merged, ordenar_por, func):
         merged[left_cursor + right_cursor] = right[right_cursor]
 
     return merged
+
+def menor_igual_que(x, y):
+    return x <= y
+
+def mayor_que(x, y):
+    return x > y
 
 def ordenarDatosDesc(datos):
     ordenados = merge_sort(datos, 'hora_t', mayor_que)
