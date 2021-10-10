@@ -58,6 +58,9 @@ def ordenarDatosAsc(datos):
     ordenados = insertionSortAsc(datos, 'hora_i')
     return ordenados
 
+'''
+Verificar que no se crucen tareas
+'''
 def comparador (seleccionados, tarea_evaluar):
     seleccionar = True
     for tarea in seleccionados:
