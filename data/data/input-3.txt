@@ -1,0 +1,6 @@
+5
+Actividad 1 (Contabilidad), 1, 23
+Actividad 2 (Entrada de datos), 7, 22
+Actividad 3 (Facturas), 22, 24
+Actividad 4 (Certificados), 22, 23
+Actividad 5 (Revisión diaria), 23, 24
