@@ -54,7 +54,7 @@ def merge(left, right, merged, ordenar_por, func):
     while left_cursor < len(left) and right_cursor < len(right):
       
         if func(left[left_cursor][ordenar_por], right[right_cursor][ordenar_por]):
-            merged[left_cursor+right_cursor]=left[left_cursor]
+            merged[left_cursor + right_cursor]=left[left_cursor]
             left_cursor += 1
         else:
             merged[left_cursor + right_cursor] = right[right_cursor]
