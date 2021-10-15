@@ -130,8 +130,9 @@ def horasAutomatizadas(tareas):
     return horas
 
 
-def archivoSalida(tareas):
-    ruta = 'data/output.txt'
+def archivoSalida(tareas, name):
+    #ruta = 'data/output.txt'
+    ruta = name
     f = open (ruta,'w')
     cantidad = len(tareas)
     horas_automatizadas = horasAutomatizadas(tareas)
@@ -153,8 +154,28 @@ def principal():
     seleccionados = selccionarTareas(datos)
     archivoSalida(seleccionados)
 
+def print_tasks(tasks):
+    texto = ""
+    for task in tasks:
+        nombre = task['nombre']
+        hora_i = task['hora_i']
+        hora_f = task['hora_f']
+        texto += f'{nombre}, {hora_i}, {hora_f} \n'
+    print(texto)
+
+def prueba():
+    task = []
+    datos = leer_archivo()
+    orden = merge_sort(datos, 'hora_f', menor_igual_que)
+    task.append(orden[0])
+    for i in range(1, len(orden)):
+        if orden[i-1]['hora_f']<=orden[i]['hora_i']:
+            task.append(orden[i])
+    print_tasks(task)
+
 
 if __name__ == '__main__':
     #Ejecucion
-    principal()
+    #principal()
+    prueba()
         
