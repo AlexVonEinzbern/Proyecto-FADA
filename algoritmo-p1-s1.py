@@ -167,10 +167,13 @@ def prueba():
     task = []
     datos = leer_archivo()
     orden = merge_sort(datos, 'hora_f', menor_igual_que)
+    N = len(orden)
+    hora_f = orden[0]['hora_f']
     task.append(orden[0])
-    for i in range(1, len(orden)):
-        if orden[i-1]['hora_f']<=orden[i]['hora_i']:
+    for i in range(1, N):
+        if hora_f<=orden[i]['hora_i']:
             task.append(orden[i])
+            hora_f = orden[i]['hora_f']
     print_tasks(task)
 
 
