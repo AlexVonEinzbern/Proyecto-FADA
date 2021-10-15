@@ -163,7 +163,7 @@ def print_tasks(tasks):
         texto += f'{nombre}, {hora_i}, {hora_f} \n'
     print(texto)
 
-def prueba():
+def select_tasks_voraz():
     task = []
     datos = leer_archivo()
     orden = merge_sort(datos, 'hora_f', menor_igual_que)
@@ -180,5 +180,5 @@ def prueba():
 if __name__ == '__main__':
     #Ejecucion
     #principal()
-    prueba()
+    select_tasks_voraz()
         
