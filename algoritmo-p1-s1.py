@@ -6,24 +6,23 @@ import sys
 # Funciones
 def leer_archivo():
     ruta_archivo = sys.argv[1]
-    f = open (ruta_archivo,'r')
-    lineas = f.readlines()
-    n = lineas[0]
-    datos = []
-    for i in range(1, len(lineas)):
-        linea = lineas[i].replace('\n','').split(sep=',')
-        tarea = linea[0]
-        hora_i = int(linea[1])
-        hora_f = int(linea[2])
-        hora_t = (hora_f - hora_i)
-        datos.append({
-            'id': i,
-            'nombre': tarea,
-            'hora_i': hora_i,
-            'hora_f': hora_f,
-            'hora_t': hora_t
-        })
-    f.close()
+    with open (ruta_archivo,'r') as f:
+        lineas = f.readlines()
+        n = lineas[0]
+        datos = []
+        for i in range(1, len(lineas)):
+            linea = lineas[i].replace('\n','').split(sep=',')
+            tarea = linea[0]
+            hora_i = int(linea[1])
+            hora_f = int(linea[2])
+            hora_t = (hora_f - hora_i)
+            datos.append({
+                'id': i,
+                'nombre': tarea,
+                'hora_i': hora_i,
+                'hora_f': hora_f,
+                'hora_t': hora_t
+            })
     print(f'Se lee archivo')
     return datos
 
@@ -75,11 +74,11 @@ def menor_igual_que(x, y):
 def mayor_que(x, y):
     return x > y
 
-def total_hours(data):
+def total_hours(data, value_i, value_f):
     total_h = 0
 
     for task in data:
-        total_h+=task['hora_f']-task['hora_i']
+        total_h+=task[value_f]-task[value_i]
     return total_h
 
 def select_tasks_voraz(datos, value_i, value_f):
@@ -114,7 +113,6 @@ def write_output_file(hours, tasks, input=sys.argv[1]):
             texto += f'{nombre}, {hora_i}, {hora_f} \n'
 
         f.write(texto)
-        f.close()
     print(f'Se escribe resultado en el archivo {output}')
 
 
@@ -122,6 +120,6 @@ if __name__ == '__main__':
 
     datos = leer_archivo()
     act = select_tasks_voraz(datos, 'hora_i', 'hora_f')
-    total_h = total_hours(act)
+    total_h = total_hours(act, 'hora_i', 'hora_f')
     write_output_file(total_h, act)
         
