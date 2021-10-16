@@ -10,20 +10,19 @@ def leer_archivo():
     lineas = f.readlines()
     n = lineas[0]
     datos = []
-    for i in range(len(lineas)):
-        if i > 0:
-            linea = lineas[i].replace('\n','').split(sep=',')
-            tarea = linea[0]
-            hora_i = int(linea[1])
-            hora_f = int(linea[2])
-            hora_t = (hora_f - hora_i)
-            datos.append({
-                'id': i,
-                'nombre': tarea,
-                'hora_i': hora_i,
-                'hora_f': hora_f,
-                'hora_t': hora_t
-            })
+    for i in range(1, len(lineas)):
+        linea = lineas[i].replace('\n','').split(sep=',')
+        tarea = linea[0]
+        hora_i = int(linea[1])
+        hora_f = int(linea[2])
+        hora_t = (hora_f - hora_i)
+        datos.append({
+            'id': i,
+            'nombre': tarea,
+            'hora_i': hora_i,
+            'hora_f': hora_f,
+            'hora_t': hora_t
+        })
     f.close()
     print(f'Se lee archivo')
     return datos
