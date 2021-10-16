@@ -1,9 +1,12 @@
-import ntpath
-import os
-import sys
+from utils.file import leer_archivo, write_output_file
+from utils.sort_algorithms import merge_sort
+from utils.utils import *
+
 # Variable global
+hours_allowed = 24
 
 # Funciones
+<<<<<<< HEAD
 def leer_archivo():
     ruta_archivo = sys.argv[1]
     with open (ruta_archivo,'r') as f:
@@ -82,17 +85,29 @@ def total_hours(data, value_i, value_f):
     return total_h
 
 def select_tasks_voraz(datos, value_i, value_f):
+=======
+
+'''
+Maximizar Horas
+Selección por menor a mayor hora inicial de cada tarea
+'''
+def select_tasks_voraz(datos, order_by):
+>>>>>>> 3ca38ebc9224fd7cac166e12449bbfe3a6202644
     task = []
-    orden = merge_sort(datos, value_f, menor_igual_que)
+    orden = merge_sort(datos, order_by, less_equal_than)
+    # print(orden)
     N = len(orden)
-    hora_f = orden[0][value_f]
+    hora_f = orden[0]['hora_f']
     task.append(orden[0])
+    total_h = orden[0]['hora_t']
     for i in range(1, N):
-        if hora_f<=orden[i][value_i]:
+        if hora_f<=orden[i]['hora_i'] and (total_h + orden[i]['hora_t']) <= hours_allowed:
             task.append(orden[i])
-            hora_f = orden[i][value_f]
+            hora_f = orden[i]['hora_f']
+            total_h += orden[i]['hora_t']
     return task
 
+<<<<<<< HEAD
 def write_output_file(hours, tasks, input=sys.argv[1]):
     output = 'output/output-'+ntpath.basename(input)
     if not os.path.exists(os.path.dirname(output)):
@@ -122,4 +137,12 @@ if __name__ == '__main__':
     act = select_tasks_voraz(datos, 'hora_i', 'hora_f')
     total_h = total_hours(act, 'hora_i', 'hora_f')
     write_output_file(total_h, act)
+=======
+if __name__ == '__main__':
+
+    data = leer_archivo()
+    task = select_tasks_voraz(data, 'hora_i')
+    total_h = total_hours(task)
+    write_output_file(total_h, task)
+>>>>>>> 3ca38ebc9224fd7cac166e12449bbfe3a6202644
         
