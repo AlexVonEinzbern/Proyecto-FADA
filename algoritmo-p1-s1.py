@@ -76,15 +76,6 @@ def menor_igual_que(x, y):
 def mayor_que(x, y):
     return x > y
 
-def print_tasks(tasks):
-    texto = ""
-    for task in tasks:
-        nombre = task['nombre']
-        hora_i = task['hora_i']
-        hora_f = task['hora_f']
-        texto += f'{nombre}, {hora_i}, {hora_f} \n'
-    print(texto)
-
 def total_hours(data):
     total_h = 0
 
