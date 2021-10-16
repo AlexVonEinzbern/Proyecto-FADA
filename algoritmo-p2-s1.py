@@ -8,8 +8,8 @@ hours_allowed = 24
 # Funciones
 
 '''
-Maximizar Horas
-Selección por menor a mayor hora inicial de cada tarea
+Maximizar Tareas
+Selección por menor a mayor hora final de cada tarea
 '''
 def select_tasks_voraz(datos, order_by):
     task = []
@@ -29,7 +29,7 @@ def select_tasks_voraz(datos, order_by):
 if __name__ == '__main__':
 
     data = leer_archivo()
-    task = select_tasks_voraz(data, 'hora_i')
+    task = select_tasks_voraz(data, 'hora_f')
     total_h = total_hours(task)
     write_output_file(total_h, task)
         
