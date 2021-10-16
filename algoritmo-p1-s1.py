@@ -1,9 +1,11 @@
+import ntpath
+import os
+import sys
 # Variable global
-horas_permitidas = 24
 
 # Funciones
 def leer_archivo():
-    ruta_archivo = input('Ingrese ruta del archivo (ej: data/input.txt): ')
+    ruta_archivo = sys.argv[1]
     f = open (ruta_archivo,'r')
     lineas = f.readlines()
     n = lineas[0]
@@ -74,86 +76,6 @@ def menor_igual_que(x, y):
 def mayor_que(x, y):
     return x > y
 
-def ordenarDatosDesc(datos):
-    ordenados = merge_sort(datos, 'hora_t', mayor_que)
-    return ordenados
-
-
-def ordenarDatosAsc(datos):
-    ordenados = merge_sort(datos, 'hora_i', menor_igual_que)
-    return ordenados
-
-'''
-Verificar que no se crucen tareas
-'''
-def comparador (seleccionados, tarea_evaluar):
-    seleccionar = True
-    for tarea in seleccionados:
-        # print(tarea_evaluar['hora_f'], ' > ', tarea['hora_i'], ' and ', tarea_evaluar['hora_i'], '<', tarea['hora_f'])
-        if tarea_evaluar['hora_f'] > tarea['hora_i'] and tarea_evaluar['hora_i'] < tarea['hora_f']:
-            seleccionar = False
-    return seleccionar
-
-def maximizarHoras(datos):
-    ordenados = ordenarDatosDesc(datos)
-    seleccionados = []
-    # print('ordenados: ', ordenados)
-    suma_horas = 0
-    for i in range(len(ordenados)):
- 
-        actual = ordenados[i]
-        if (suma_horas <= horas_permitidas) and (i == 0 or comparador(seleccionados, actual)):
-            actual['aplica'] = True
-            seleccionados.append(actual)
-            suma_horas += actual['hora_t']
-        else:
-            actual['aplica'] = False
-    # print('seleccionados: ', seleccionados)
-    return ordenados
-
-
-def selccionarTareas(datos):
-    verificados = maximizarHoras(datos)
-    seleccionados = []
-    for tarea in verificados:
-        if tarea['aplica']:
-            seleccionados.append(tarea)
-    resultado = ordenarDatosAsc(seleccionados)
-    print(f'Se seleccionan tareas')
-    return resultado
-
-
-def horasAutomatizadas(tareas):
-    horas = 0
-    for tarea in tareas:
-        horas += tarea['hora_t']
-    return horas
-
-
-def archivoSalida(tareas, name):
-    #ruta = 'data/output.txt'
-    ruta = name
-    f = open (ruta,'w')
-    cantidad = len(tareas)
-    horas_automatizadas = horasAutomatizadas(tareas)
-    texto = f'{cantidad}\n'
-    texto += f'{horas_automatizadas}\n'
-    for tarea in tareas:
-        nombre = tarea['nombre']
-        hora_i = tarea['hora_i']
-        hora_f = tarea['hora_f']
-        texto += f'{nombre}, {hora_i}, {hora_f} \n'
-
-    f.write(texto)
-    f.close()
-    print(f'Se escribe resultado en el archivo {ruta}')
-
-
-def principal():
-    datos = leer_archivo()
-    seleccionados = selccionarTareas(datos)
-    archivoSalida(seleccionados)
-
 def print_tasks(tasks):
     texto = ""
     for task in tasks:
@@ -163,22 +85,53 @@ def print_tasks(tasks):
         texto += f'{nombre}, {hora_i}, {hora_f} \n'
     print(texto)
 
-def select_tasks_voraz():
+def total_hours(data):
+    total_h = 0
+
+    for task in data:
+        total_h+=task['hora_f']-task['hora_i']
+    return total_h
+
+def select_tasks_voraz(datos, value_i, value_f):
     task = []
-    datos = leer_archivo()
-    orden = merge_sort(datos, 'hora_f', menor_igual_que)
+    orden = merge_sort(datos, value_f, menor_igual_que)
     N = len(orden)
-    hora_f = orden[0]['hora_f']
+    hora_f = orden[0][value_f]
     task.append(orden[0])
     for i in range(1, N):
-        if hora_f<=orden[i]['hora_i']:
+        if hora_f<=orden[i][value_i]:
             task.append(orden[i])
-            hora_f = orden[i]['hora_f']
-    print_tasks(task)
+            hora_f = orden[i][value_f]
+    return task
+
+def write_output_file(hours, tasks, input=sys.argv[1]):
+    output = 'output/output-'+ntpath.basename(input)
+    if not os.path.exists(os.path.dirname(output)):
+        try:
+            os.makedirs(os.path.dirname(output))
+        except OSError as exc:
+            if exc.errno != errno.EEXIST:
+                raise 
+    with open(output, "w") as f:
+        cantidad = len(tasks)
+        horas_automatizadas = hours
+        texto = f'{cantidad}\n'
+        texto += f'{horas_automatizadas}\n'
+        for task in tasks:
+            nombre = task['nombre']
+            hora_i = task['hora_i']
+            hora_f = task['hora_f']
+            texto += f'{nombre}, {hora_i}, {hora_f} \n'
+
+        f.write(texto)
+        f.close()
+    print(f'Se escribe resultado en el archivo {output}')
 
 
 if __name__ == '__main__':
-    #Ejecucion
-    #principal()
-    select_tasks_voraz()
+
+    datos = leer_archivo()
+    act = select_tasks_voraz(datos, 'hora_i', 'hora_f')
+    total_h = total_hours(act)
+    write_output_file(total_h, act)
         
