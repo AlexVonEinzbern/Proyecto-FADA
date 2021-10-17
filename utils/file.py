@@ -4,7 +4,7 @@ import sys
 # Variable global
 
 # Funciones
-def leer_archivo():
+def read_file():
     ruta_archivo = sys.argv[1]
     f = open (ruta_archivo,'r')
     lineas = f.readlines()

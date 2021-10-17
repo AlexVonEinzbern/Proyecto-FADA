@@ -1,4 +1,4 @@
-from utils.file import leer_archivo, write_output_file
+from utils.file import read_file, write_output_file
 from utils.sort_algorithms import merge_sort
 from utils.utils import *
 
@@ -37,7 +37,7 @@ def select_tasks_voraz(datos, order_by):
 
 if __name__ == '__main__':
 
-    data = leer_archivo()
+    data = read_file()
     task = select_tasks_voraz(data, 'hora_t')
     total_h = total_hours(task)
     write_output_file(total_h, task)
