@@ -1,11 +1,101 @@
-8
-Actividad 1, 1, 2
-Actividad 2, 2, 3
-Actividad 2p, 2, 8
-Actividad 3, 3, 4
-Actividad 4, 4, 5
-Actividad 4p, 4, 16
-Actividad 6, 5, 10
-Actividad 7, 10, 15
-Actividad 8, 15, 16
-Actividad 9, 16, 20
+100
+Steel Erectors, 13, 24
+Roofing Suppliers, 23, 24
+Certificados, 7, 11
+Developer , 20, 23
+Fans , 10, 15
+Underground Utilities, 12, 23
+Builders , 13, 22
+Underground Utilities, 19, 22
+Carpet & Floor Coverings , 15, 23
+Golf Course Construction , 20, 22
+Utilities, 22, 24
+Septic Design , 16, 20
+Insulation Contractors , 13, 18
+Accounting, Tax Preparation , 1, 13
+Real Estate Sales & Marketing , 15, 22
+Servicio post venta, 1, 7
+Concrete Ready Mix , 3, 20
+Employee Benefits , 13, 14
+Steel Erectors, 17, 18
+Cellular Phones , 5, 10
+Steel Erectors, 3, 12
+Kitchen & Bath , 7, 24
+Underground Utilities, 2, 7
+Cabinet Manufacturing , 0, 1
+Roof Tile Manufacturers, 19, 21
+Insurance , 5, 24
+Steel Erectors, 23, 24
+Cleaning/Janitorial , 7, 9
+Restaurants/Food, 5, 12
+Shutters-Interior/Exterior/Storm, 23, 24
+Planeación, 20, 23
+Soporte, 7, 18
+Planificación financiera , 20, 24
+Warranty Programs, 16, 22
+Engineers , 9, 12
+Balances, 23, 24
+Comunicación, 10, 15
+Propane Gas , 20, 23
+Awnings , 1, 24
+Building Materials: Wholesale , 19, 20
+Revisión diaria, 3, 9
+Building Materials: Wholesale , 20, 23
+Wall Covering Contractors, 1, 3
+Jewelers , 14, 17
+Charter Fishing , 16, 22
+Paving Contractors , 8, 16
+Glass & Mirror Products, 17, 18
+Safety Consulting, 9, 22
+Rebar Detailing & Fabrication , 9, 23
+Doors , 18, 23
+Investment Realestate Sales , 3, 7
+Repairs , 4, 23
+Chiropractic Physician , 21, 24
+Elaboración de los Estados financieros, 5, 15
+Printers , 14, 18
+Mechanical Contractors , 16, 23
+Ingreso de datos, 6, 14
+Certificados, 17, 18
+Metal Fabrication , 11, 23
+Building Materials: Wholesale , 19, 24
+Educational Programs/Tools , 4, 6
+Warranty Programs, 20, 22
+Pagos, 2, 17
+Internet , 16, 22
+Underground Utilities, 8, 12
+Consulta por pantalla, 23, 24
+Residential Cleaning , 21, 22
+Procesos, 15, 21
+Obtención de recursos, 6, 19
+Television Stations, 6, 21
+Fitness Equipment Design & Supply, 13, 22
+Concrete Ready Mix , 18, 23
+Water Conditioning, 2, 23
+Parking , 15, 17
+Portable Toilets , 18, 22
+Fire/Water Damage Restoration , 16, 17
+Paint & Wall Cover Suppliers, 18, 21
+Pre-Engineered Metal Buildings , 3, 17
+Commercial Builders, 20, 22
+Devoluciones, 20, 24
+Inversiones, 12, 24
+Computer Services/Systems, 2, 20
+Audio , 9, 12
+Tesorería, 2, 4
+Inversiones, 11, 15
+Fences , 3, 20
+Wood Floors, 8, 13
+DryCleaners , 4, 18
+Indoor Air Quality/Moisture Control, 10, 16
+Jewelers , 23, 24
+Audio , 4, 9
+Surveying & Land Planning, 10, 24
+Residential Cleaning , 14, 15
+Educational Programs/Tools , 7, 21
+Parking , 23, 24
+Stairs, 11, 17
+Inversiones, 17, 22
+Broadcast Companies , 15, 24
+Repairs , 0, 9
+Irrigation Systems , 13, 21

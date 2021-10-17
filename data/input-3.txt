@@ -1,6 +1,51 @@
-5
-Actividad 1 (Contabilidad), 1, 23
-Actividad 2 (Entrada de datos), 7, 22
-Actividad 3 (Facturas), 22, 24
-Actividad 4 (Certificados), 22, 23
-Actividad 5 (Revisión diaria), 23, 24
+50
+Restoration, 10, 16
+Windows, 13, 14
+Promotional Products , 4, 6
+Golf Course Construction , 18, 21
+Residential Cleaning , 20, 22
+Computer Services/Systems, 5, 20
+Travel Agent, 15, 20
+Auger Cast Piles , 15, 21
+Architectural Precast , 18, 19
+Residential Builders , 10, 24
+Shell Contractors, 5, 24
+Disposal Services , 1, 5
+Consulta por pantalla, 0, 20
+Film Production , 21, 24
+Inversiones, 20, 21
+Rebar Detailing & Fabrication , 12, 24
+Film Production , 22, 23
+Brick Pavers , 13, 16
+Real Estate Sales & Marketing , 21, 22
+Relaciones financieras, 19, 20
+Attorneys , 22, 24
+Underground Utilities, 2, 15
+Residential Remodeling - As Primary, 22, 24
+Recycling , 11, 23
+Online Bid Requests, 2, 17
+Builders , 2, 13
+Insurance , 8, 10
+Construction Consultants , 10, 21
+Mobile Office, 4, 22
+Diversificación, 23, 24
+Registros, 5, 12
+Engineers , 10, 14
+Propane Gas , 3, 14
+Golf Course Construction , 21, 23
+Pool Wholesale Supplier , 14, 18
+Renderings & Animations , 21, 22
+Warranty Programs, 22, 23
+Building Materials: Wholesale , 23, 24
+Surety Bonds, 19, 22
+Tennis Construction, 14, 17
+Certificados, 5, 17
+Lending/Line Of Credit , 6, 23
+Computer Services/Systems, 8, 21
+Gates, 7, 16
+Shower Enclosures, 23, 24
+Marble & Granite , 23, 24
+Educational Programs/Tools , 7, 9
+Metal Fabrication , 5, 10
+Fitness Equipment Design & Supply, 1, 23
+Internet , 22, 24
