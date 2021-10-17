@@ -1,6 +1,6 @@
 5
-Parking Lot Striping, 11, 14
-Telephone, 13, 17
-Tile Contractors, 6, 9
-Marine Construction, 19, 23
-Rental Equipment, 4, 24
+Excavating - Grading  & Trenching, 17, 19
+Fish Tanks, 15, 23
+Scaffolding, 9, 14
+Education, 17, 18
+Workers' Compensation, 4, 15
