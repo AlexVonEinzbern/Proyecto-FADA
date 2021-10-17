@@ -37,6 +37,29 @@ def select_tasks_voraz(datos, order_by):
             total_h += orden[i]['hora_t']
     return task
 
+def robotic():
+    with open(output, 'a') as f:
+        # Leer el archivo con las tareas
+        data = read_file()
+
+        # Registro de tiempo inicio ejecución
+        start_time = time.time()
+
+        # Seleccionar las tareas
+        task = select_tasks_voraz(data, 'hora_t')
+
+        # Registro de tiempo fin ejecución
+        final_time = time.time()-start_time
+
+        # total de horas
+        total_h = total_hours(task)
+
+        # Escribir archivo con el total de horas y tareas seleccionadas
+        write_output_file(total_h, task)
+
+        # Escribir tiempo
+        f.write(f'{str(final_time)}\n')
+
 if __name__ == '__main__':
     output = 'times/algoritmo-p2-s2_times.txt'
     if not os.path.exists(os.path.dirname(output)):
@@ -46,12 +69,5 @@ if __name__ == '__main__':
             if exc.errno != errno.EEXIST:
                 raise 
 
-    with open(output, 'a') as f:
-        data = read_file()
-        start_time = time.time()
-        task = select_tasks_voraz(data, 'hora_t')
-        final_time = time.time()-start_time
-        total_h = total_hours(task)
-        write_output_file(total_h, task)
-        f.write(f'{str(final_time)}\n')
+    robotic()
         
