@@ -1,6 +1,8 @@
+import os
 from utils.file import read_file, write_output_file
 from utils.sort_algorithms import merge_sort
 from utils.utils import *
+import time
 
 # Variable global
 hours_allowed = 24
@@ -27,9 +29,20 @@ def select_tasks_voraz(datos, order_by):
     return task
 
 if __name__ == '__main__':
+    output = 'times/algoritmo-p1-s1_times.txt'
+    if not os.path.exists(os.path.dirname(output)):
+        try:
+            os.makedirs(os.path.dirname(output))
+        except OSError as exc:
+            if exc.errno != errno.EEXIST:
+                raise 
 
-    data = read_file()
-    task = select_tasks_voraz(data, 'hora_i')
-    total_h = total_hours(task)
-    write_output_file(total_h, task)
-        
+    with open(output, 'a') as f:
+
+        data = read_file()
+        start_time = time.time()
+        task = select_tasks_voraz(data, 'hora_i')
+        final_time = time.time()-start_time
+        total_h = total_hours(task)
+        write_output_file(total_h, task)
+        f.write(f'{str(final_time)}\n')
