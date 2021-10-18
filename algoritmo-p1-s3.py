@@ -19,7 +19,7 @@ El beneficio está dado por el total de horas que dura una actividad.
 def select_tasks_dynamic(datos, order_by):
     # Ordenar las tareas
     task = merge_sort(datos, order_by, less_equal_than)
-
+    # print(task)
     # Cantidad de tareas
     N = len(task)
 
@@ -56,26 +56,29 @@ def createArrays(M, N, task):
 
     b_max = np.zeros(((M+1), (N+1)))
     b_aux = np.zeros(((M+1), (N+1)))
+    habilitado = 0 # Hora inicio disponibilidad
 
     for j in range(N+1): # Objetos
         for i in range(M+1): # Capacidad
             # print(f'[{i},{j}]')
             W = task[j]['hora_f']
+            I = task[j]['hora_i']
             B = task[j]['hora_t']
 
             if i == 0 or j == 0 :
                 b_max[i][j] = 0
                 b_aux[i][j] = 0
-            elif i >= W :
-                
-                if b_max[i][(j-1)] >= (b_max[(i - W)][(j-1)] + B) :
-                    # print(f'NO [{i},{j}]  if {b_max[i][(j-1)]} >= b_max[{(i - W)}][{(j-1)}] => {b_max[(i - W)][(j-1)]} + {B}')
-                    b_max[i][j] = b_max[i][(j - 1)]
-                    b_aux[i][j] = 0
-                else:
+            elif i >= W:
+                # print('i: ', i, ' W: ', W, ' I: ', I, ' habilitado: ', habilitado)
+                if (b_max[(i - W)][(j-1)] + B) >= b_max[i][(j-1)] and task[j]['hora_i'] >= task[j-1]['hora_f']:
                     # print(f'SI [{i},{j}]  if {b_max[i][(j-1)]} >= b_max[{(i - W)}][{(j-1)}] => {b_max[(i - W)][(j-1)]} + {B}')
                     b_max[i][j] = (b_max[(i - W)][(j-1)] + B)
                     b_aux[i][j] = 1
+                    habilitado = W
+                else:
+                    # print(f'NO [{i},{j}]  if {b_max[i][(j-1)]} >= b_max[{(i - W)}][{(j-1)}] => {b_max[(i - W)][(j-1)]} + {B}')
+                    b_max[i][j] = b_max[i][(j - 1)]
+                    b_aux[i][j] = 0
             else:
                 b_max[i][j] = b_max[i][(j - 1)]
                 b_aux[i][j] = 0
@@ -88,7 +91,7 @@ def solutionAux(b_aux, i, j, task, resultado=[]):
 
     if i == 0 or j == 0 :
         next
-    elif b_aux[i,j] == 1 :
+    elif b_aux[i][j] == 1 :
         # print(f'La tarea {j} fue seleccionada')
         resultado.append(j)
         solutionAux(b_aux, (i - W), (j - 1), task, resultado)

@@ -2,5 +2,5 @@
 
 for file in data/*;
 do
-    python "$1" "$file" 
+    python3 "$1" "$file" 
 done
