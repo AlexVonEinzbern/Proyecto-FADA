@@ -1,3 +1,11 @@
+"""
+UNIVERSIDAD DEL VALLE
+FUNDAMENTOS DE ANÁLISIS Y DISEÑO DE ALGORITMOS | MINI-PROYECTO 
+ESTUDIANTES:
+MARIO ALEXANDER DÍAZ, COD. 1825106 
+LISETH DAYANA CASTILLO QUIÑONES, CÓD. 1843187
+"""
+
 import os
 import time
 from utils.file import read_file, write_output_file
@@ -35,6 +43,7 @@ def select_tasks_voraz(datos, order_by):
         if check_task(task, orden[i]) and (total_h + orden[i]['hora_t']) <= hours_allowed:
             task.append(orden[i])
             total_h += orden[i]['hora_t']
+    print('Se seleccionan las tareas')
     return task
 
 def robotic():

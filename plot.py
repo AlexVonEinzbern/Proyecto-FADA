@@ -13,14 +13,14 @@ def plot(title, file=sys.argv[1]):
                 if exc.errno != errno.EEXIST:
                     raise 
         lines = f.readlines()
-        n = [5, 15, 50, 100, 150, 200, 500, 1000, 1500, 2000]
+        n = [5, 15, 50, 100, 150, 200, 500]
         time = [float(i) for i in lines]
 
         plt.plot(n, time)
         plt.title(title)
         plt.xlabel('N')
         plt.ylabel(('Time'))
-        plt.savefig(output+f'plot-{os.path.splitext(ntpath.basename(file))[0]}.png')
+        plt.savefig(output+f'plot-{os.path.splitext(ntpath.basename(file))[0]}-mB.png')
 
 if __name__ == '__main__':
-    plot("Óptimizar Tareas Algoritmo 1")
+    plot("Óptimizar Horas Algoritmo 3")

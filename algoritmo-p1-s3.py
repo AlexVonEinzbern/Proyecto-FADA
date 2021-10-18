@@ -1,6 +1,14 @@
+"""
+UNIVERSIDAD DEL VALLE
+FUNDAMENTOS DE ANÁLISIS Y DISEÑO DE ALGORITMOS | MINI-PROYECTO 
+ESTUDIANTES:
+MARIO ALEXANDER DÍAZ, COD. 1825106 
+LISETH DAYANA CASTILLO QUIÑONES, CÓD. 1843187
+"""
 
+import os
+import time
 import numpy as np
-
 from utils.file import read_file, write_output_file
 from utils.sort_algorithms import merge_sort
 from utils.utils import *
@@ -94,17 +102,55 @@ def solutionAux(b_aux, i, j, task, resultado=[]):
     elif b_aux[i][j] == 1 :
         # print(f'La tarea {j} fue seleccionada')
         resultado.append(j)
-        solutionAux(b_aux, (i - W), (j - 1), task, resultado)
+        return solutionAux(b_aux, (i - W), (j - 1), task, resultado)
     else:
         # print(f'La tarea {j} No fue seleccionada')
-        solutionAux(b_aux, i, (j - 1), task, resultado)
+        return solutionAux(b_aux, i, (j - 1), task, resultado)
 
     return resultado
 
+# def solutionAux2(b_aux, M, N, task, resultado=[]):
+#     n = len(task)
+#     c_aux = N
+#     resultado=[]
+#     for k in range(M):
+#         i = n - k
+#         j = N - 1
+#         W = task[j]['hora_f']
+        
+#         if b_aux[i][c_aux] == 1 :
+#             c_aux = c_aux - W
+#             resultado.append(i)
+
+
+def robotic():
+    with open(output, 'a') as f:
+        # Leer el archivo con las tareas
+        data = read_file()
+
+        # Registro de tiempo inicio ejecución
+        start_time = time.time() # Registro de tiempo ejecución
+
+        # Seleccionar las tareas
+        task, total_h = select_tasks_dynamic(data, 'hora_f')
+
+        # Registro de tiempo fin ejecución
+        final_time = time.time()-start_time
+       
+        # Escribir archivo con el total de horas y tareas seleccionadas
+        write_output_file(total_h, task)
+
+        # Escribir tiempo
+        f.write(f'{str(final_time)}\n')
 
 if __name__ == '__main__':
+    output = 'times/algoritmo-p1-s3_times.txt'
+    if not os.path.exists(os.path.dirname(output)):
+        try:
+            os.makedirs(os.path.dirname(output))
+        except OSError as exc:
+            if exc.errno != errno.EEXIST:
+                raise 
 
-    data = read_file()
-    task, total_h = select_tasks_dynamic(data, 'hora_f')
-    write_output_file(total_h, task)
+    robotic()
         

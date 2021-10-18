@@ -1,4 +1,12 @@
-2
-7
-Building Materials: Home Centers, 0, 6 
+10
+18
+Rental Equipment, 19, 20 
 Drywall & Plaster Contractors, 9, 10 
+Cleaning/Janitorial, 17, 18 
+Glass & Mirror Products, 22, 23 
+Kitchen & Bath, 16, 17 
+Screen/Screen Enclosures, 20, 21 
+Attorneys, 14, 15 
+Surveying & Land Planning, 6, 8 
+Television Stations, 10, 13 
+Building Materials: Home Centers, 0, 6 
